@@ -1,0 +1,50 @@
+.grid {
+	display: grid;
+	grid-gap: 0;
+	height: 60vh;
+	position: relative;
+	width: 100%;
+}
+#grid .square {
+	height: 100%;
+	width: 100%;
+	opacity: 0.2;
+}
+#grid.active .square:active {
+	opacity: 1;
+}
+#grid.active .square {
+	opacity: 0.5;
+}
+
+#grid.prompt:before,
+#grid.failed:before,
+#grid.passed:before,
+#grid.game-over:before {
+	align-items: center;
+	color: #2B5873;
+	display: flex;
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 3.5rem;
+	font-weight: bold;
+	height: 100%;
+	justify-content: center;
+	position: absolute;
+	width: 100%;
+}
+
+#grid.prompt:before {
+	content: "Copy me!";
+}
+#grid.failed:before {
+	content: "Wrong :(";
+	color: #73232B;
+}
+#grid.passed:before {
+	content: "Correct :)";
+	color: #2B7323;
+}
+#grid.game-over:before {
+	content: "Game over. Reload to start again";
+	color: #73232B;
+}
