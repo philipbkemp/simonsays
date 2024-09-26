@@ -106,3 +106,21 @@ a {
 h1 .small {
 	font-size: 1rem;
 }
+
+#heartbeat img {
+    height: 25px;
+    margin-left: 5px;
+}
+#heartbeat img.full-heart.dead {
+    animation: 3s ease-out shrinkHeart forwards;
+}
+
+
+@keyframes shrinkHeart {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(0);
+    }
+}

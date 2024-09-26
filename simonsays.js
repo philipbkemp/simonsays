@@ -9,12 +9,32 @@ guess = [];
 fails = 0;
 levelsUp = 0;
 grade = 0;
+maxHearts = 3;
 
 $(document).ready(function(){
+
+	drawHearts();
 
 	levelUp();
 
 });
+
+function drawHearts() {
+	$heartbeat = $("#heartbeat");
+	$heartbeat.html("");
+	for ( i=0 ; i!==maxHearts ; i++ ) {
+		$heartbeat.append(
+			$("<IMG />").attr("src","assets/full-heart.png").addClass("full-heart")
+		);
+	}
+}
+
+function destroyHeart() {
+	full = $("#heartbeat .full-heart:not(.dead)");
+	if ( full.length !== 0 ) {
+		$(full[0]).addClass("dead");
+	}
+}
 
 function showPattern() {
 	if ( patternShowIndex < pattern.length ) {
@@ -50,10 +70,11 @@ function wasWrong() {
 	$(".square").off("click");
 	$("#grid").removeClass("active");
 	fails++;
+	destroyHeart();
 	$("#grid").addClass("failed");
 	guess = [];
 	patternShowIndex = -1;
-	if ( fails < 3 ) {
+	if ( fails < maxHearts ) {
 		setTimeout(retry,2000);
 	} else {
 		setTimeout(gameOver,2000);
